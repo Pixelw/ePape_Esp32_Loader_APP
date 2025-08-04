@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -114,21 +113,21 @@ public class UploadActivity extends AppCompatActivity
         //-----------------------------------------------------
         private boolean init(Bitmap bmp)
         {
-            int w = bmp.getWidth(); // Picture with
-            int h = bmp.getHeight();// Picture height
+            int width = bmp.getWidth(); // Picture with
+            int height = bmp.getHeight();// Picture height
             int epdInd = EPaperDisplay.epdInd;
-            array = new int[w*h]; // Array of pixels
+            array = new int[width * height]; // Array of pixels
             int i = 0;            // Index of pixel in the array of pixels
 
             // Loading pixels into array
             //-------------------------------------------------
 
-            for (int y = 0; y < h; y++)
-                for (int x = 0; x < w; x++, i++)
+            for (int yIndex = 0; yIndex < height; yIndex++)
+                for (int xIndex = 0; xIndex < width; xIndex++, i++)
                     if(epdInd == 25 || epdInd ==37)
-                        array[i] = getVal_7color(bmp.getPixel(x, y));
+                        array[i] = getVal_7color(bmp.getPixel(xIndex, yIndex));
                     else
-                        array[i] = getVal(bmp.getPixel(x, y));
+                        array[i] = getVal(bmp.getPixel(xIndex, yIndex));
 
             pxInd = 0;
             xLine = 0;  //2.13inch
